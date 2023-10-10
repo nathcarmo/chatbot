@@ -18,6 +18,8 @@ python3 api/index.py
 echo "export OPENAI_API_KEY='yourkey'" >> ~/.bash_profile
 source ~/.bash_profile
 ```
+> *NOTE*: if you are using .zshrc instead of bash, repeat the steps with your .zshrc file instead
+
 5. You can verify that you environement variable is correctly set up by running
 ```bash
 echo $OPENAI_API_KEY
