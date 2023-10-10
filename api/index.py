@@ -1,4 +1,5 @@
 import os
+import openai
 import pandas as pd
 from flask_cors import CORS
 from flask import Flask, jsonify, request
@@ -6,8 +7,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.agents.agent_types import AgentType
 from langchain.agents import create_pandas_dataframe_agent
 
-# Set the OpenAI API key to an empty string (You should replace this with your actual API key)
-os.environ["OPENAI_API_KEY"] = "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"
+# Set your ‘OPENAI_API_KEY’ Environment Variable using bash
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 app = Flask(__name__)
 CORS(app)
