@@ -4,14 +4,18 @@ import { SyntheticEvent, useState } from 'react'
 const Home: NextPage = () => {
 
   const [answer, setAnswer] = useState("");
+  const [loading, setLoading] = useState("");
   const [question, setQuestion] = useState("");
 
   async function onSubmit(event: SyntheticEvent) {
     event.preventDefault()
+    setAnswer("")
+    setLoading("...Loading...")
     fetch("http://localhost:5328/api/openai?question="+question)
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
+      setLoading("")
       setAnswer(data.answer)
     })
   }
@@ -31,7 +35,7 @@ const Home: NextPage = () => {
       </div>
       <div className="uk-container uk-text-center uk-padding">
         <div className="uk-inline">
-          <div id="answer" className="uk-flex uk-flex-center uk-flex-middle uk-padding uk-width-expand">{answer}</div>
+          <div id="answer" className="uk-flex uk-flex-center uk-flex-middle uk-padding uk-width-expand">{loading}{answer}</div>
         </div>
       </div>
     </div>
